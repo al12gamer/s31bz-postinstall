@@ -57,11 +57,17 @@ gpdwin () {
 }
 thinkpad () {
         clear
-	echo "What distro are you running?"
+	echo "What distro are you running? If you have returned here, input S to skip."
+	sleep 1
+	echo "1 = Fedora"
+	echo "S = Skip"
+	echo "Enter Q to quit"
 	read answer1
 	case "$answer1" in
 		1) fedora-tp;;
 		Q) quitscript;;
+		#S) skip;;
+	
 	esac
 	badoption
 	}
@@ -80,7 +86,7 @@ fedora-tp () {
 	echo "Returning to menu when installs have completed. Please reboot"
 	sleep 2
 	finish
-	mainmenu
+	thinkpad
 }
 # Start of Main Script
 while true
