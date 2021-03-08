@@ -1,5 +1,5 @@
 #!/bin/bash
-# Start menu to choose your device
+# Start menu functions to choose your device
 mainmenu () {
 	clear
 	echo "==================================="
@@ -78,3 +78,9 @@ fedora-tp () {
 	finish
 	mainmenu
 }
+# Start of Main Script
+while true
+do
+	mainmenu
+done
+# End of Main Script
