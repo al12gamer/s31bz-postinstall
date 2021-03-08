@@ -38,9 +38,7 @@ badoption () {
 }
 finish () {
 	clear
-	tput setaf 10
 	echo "Done..."
-	tput setaf 9
 	echo "------------------"
 	echo "PLEASE REBOOT"
 	echo "------------------"
@@ -77,5 +75,6 @@ fedora-tp () {
 	sleep 5
 	echo "Returning to menu when installs have completed. Please reboot"
 	sleep 2
+	finish
 	mainmenu
 }
