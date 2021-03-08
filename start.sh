@@ -14,6 +14,10 @@ mainmenu () {
 	echo "Make sure you have a stable and fast Internet connection before proceeding!!!"
 	echo "Press Q to quit"
 	echo "Enter your selection followed by <return>:"
+	echo "1 = GPD Win device"
+	echo "2 = Thinkpad"
+	echo "3 = System76 laptop or Thelio"
+	echo "4 = Framework Laptop"
 	sleep 2
 	read answer
 	case "$answer" in
