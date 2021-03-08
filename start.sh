@@ -95,6 +95,7 @@ thinkpad () {
 	echo "1 = Fedora"
 	echo "S = Skip"
 	tput setaf 9
+	echo "Options for other distros are work in progress, please await commits"
 	echo "Enter Q to quit"
 	tput sgr0
 	echo "Enter your selection followed by <return>:"
