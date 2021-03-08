@@ -1,5 +1,5 @@
 #!/bin/bash
-# Start menu functions to choose your device
+# End of Menu Functions/Script Functions
 mainmenu () {
 	clear
 	tput setaf 3
@@ -128,6 +128,7 @@ fedora-tp () {
 	bash ./fedora-tp.sh
 	finishtothinkpad
 }
+# End of Menu Functions/Script Functions
 # Start of Main Script
 while true
 do
