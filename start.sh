@@ -6,6 +6,7 @@ mainmenu () {
 	echo " --- Alex's Post-install Setup Script ---"
 	echo "==================================="
 	echo "Supported Devices: GPD Win devices, Thinkpads, System76 laptops/Thelio, FrameWork Laptop"
+	echo "Supported Distros: Pop!_OS, Fedora, Arch-based distros"
 	echo "Script may prompt you or ask you for your password once in a while. Please monitor your computer until the script is done."
 	echo "This script will show terminal output. This is normal."
 	echo "You can open this script in a text editor to see packages to be installed in detail."
