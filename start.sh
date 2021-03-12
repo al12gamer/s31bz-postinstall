@@ -93,15 +93,18 @@ thinkpad () {
 	tput setaf 3
 	echo "What distro are you running? If you have returned here, input S to skip."
 	echo "1 = Fedora"
+	echo "2 = Pop!_OS"
+	echo "3 = Arch or Arch-based distro"
 	echo "S = Skip"
 	tput setaf 9
-	echo "Options for other distros are work in progress, please await commits"
 	echo "Enter Q to quit"
 	tput sgr0
 	echo "Enter your selection followed by <return>:"
 	read answer1
 	case "$answer1" in
 		1) fedora-tp;;
+		2) pop-os-tp;;
+		3) arch-tp;;
 		# Redundancy in letters (see main menu for extra note)
 		Q) quitscript;;
 		q) quitscript;;
@@ -127,6 +130,26 @@ fedora-tp () {
 	sleep 2
 	# Below line is subject to change depending on file location
 	bash ./fedora-tp.sh
+	finishtothinkpad
+}
+pop-os-tp () {
+	clear
+	tput setaf 3
+	echo "Starting Installs..."
+	tput sgr0
+	sleep 2
+	# Below line is subject to change depending on file location
+	bash ./pop-os-tp.sh
+	finishtothinkpad
+}
+arch-tp () {
+	clear
+	tput setaf 3
+	echo "Starting Installs..."
+	tput sgr0
+	sleep 2
+	# Below line is subject to change depending on file location
+	bash ./arch-tp.sh
 	finishtothinkpad
 }
 # End of Menu Functions/Script Functions
