@@ -129,7 +129,7 @@ fedora-tp () {
 	tput sgr0
 	sleep 2
 	# Below line is subject to change depending on file location
-	bash ./fedora-tp.sh
+	bash ~/fedora-tp.sh
 	finishtothinkpad
 }
 pop-os-tp () {
@@ -139,7 +139,7 @@ pop-os-tp () {
 	tput sgr0
 	sleep 2
 	# Below line is subject to change depending on file location
-	bash ./pop-os-tp.sh
+	bash ~/pop-os-tp.sh
 	finishtothinkpad
 }
 arch-tp () {
@@ -149,7 +149,7 @@ arch-tp () {
 	tput sgr0
 	sleep 2
 	# Below line is subject to change depending on file location
-	bash ./arch-tp.sh
+	bash ~/arch-tp.sh
 	finishtothinkpad
 }
 # End of Menu Functions/Script Functions
