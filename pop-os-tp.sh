@@ -64,7 +64,7 @@ for package_name in ${PACKAGE_LIST[@]}; do
 	if ! sudo apt list --installed | grep -q "^\<$package_name\>"; then
 		echo "installing $package_name..."
 		sleep .5
-		sudo apt-get install "$package_name" -y
+		sudo apt-get install "$package_name" -yq
 		echo "$package_name installed"
 	else
 		echo "$package_name already installed"
@@ -73,7 +73,7 @@ done
 
 for flatpak_name in ${FLATPAK_LIST[@]}; do
 	if ! flatpak list | grep -q $flatpak_name; then
-		flatpak install "$flatpak_name" -y
+		flatpak install "$flatpak_name" -yq
 	else
 		echo "$package_name already installed"
 	fi
@@ -95,7 +95,7 @@ sudo apt update -yq && sudo apt install codium -yq
 
 # grab ukuu alternative
 sudo add-apt-repository ppa:cappelikan/ppa
-sudo apt update -y && sudo apt install -y mainline
+sudo apt update -yq && sudo apt install -yq mainline
 
 # upgrade packages
 sudo apt-get update -yq
