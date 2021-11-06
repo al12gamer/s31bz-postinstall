@@ -2,44 +2,41 @@
 
 PACKAGE_LIST=(
 	vim
-	aha
 	calibre
-	zsh
+	codium
+	fish
 	fira-code-fonts
 	lutris
 	steam
 	legendary
 	vlc
-	gamemode
 	mcomix3
 	qbittorrent
 	htop
 	gnome-boxes
 	handbrake
-	gnome-extensions-app
 	gnome-tweaks
 	gnome-shell-extension-pop-shell
 	python3
 	python3-pip
 	youtube-dl
 	neofetch
-	nmap
 	pv
-	virt-manager
-	virtio-win
 	wget
 	java-latest-openjdk
-	java-11-openjdk
 	wine
+	winetricks
 	heroic-games-launcher-bin
 	discord
 	linux-util-user
-	
+	alacritty
+	fwupd
+	radeontop
+	dnfdragora
+	system76-power
 )
 
 FLATPAK_LIST=(
-	org.gnome.Podcasts
-	com.github.calo001.fondo
 	io.lbry.lbry-app
 	org.telegram.desktop
 	com.mojang.Minecraft
@@ -57,6 +54,8 @@ sudo dnf groupupdate core -yq
 
 # install development tools 
 sudo dnf groupinstall "Development Tools" -yq
+sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg  -yq
+printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg" |sudo tee -a /etc/yum.repos.d/vscodium.repo
 
 # install multimedia packages
 sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin -yq
@@ -72,12 +71,15 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 
 # add third party software
 
-# add virtio
-sudo wget https://fedorapeople.org/groups/virt/virtio-win/virtio-win.repo \
-  -O /etc/yum.repos.d/virtio-win.repo
+# eggy's repo recommendations for gaming and performance
+sudo dnf copr enable gloriouseggroll/mesa-aco -yq 
+sudo dnf copr enable sentry/kernel-fsync -yq
+
+# add szydell for system76-power package, but feel free to install the driver if you own system76 hardware
+sudo dnf copr enable szydell/system76 -yq
   
 # add heroic games launcher
-sudo dnf copr enable atim/heroic-games-launcher -y
+sudo dnf copr enable atim/heroic-games-launcher -yq
  
 # update repositories
 
@@ -104,13 +106,19 @@ for flatpak_name in ${FLATPAK_LIST[@]}; do
 done
 
 
-# add ohmyzsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# add zsh config
+# add fish
+
+# add protonup (now that prerequisites are fulfilled)
+pip install protonup
 
 # add Mullvad
 wget --content-disposition https://mullvad.net/download/app/rpm/latest
 
 # upgrade packages
-sudo dnf upgrade -yq
+sudo dnf distro-sync -y && sudo dnf update --refresh -y && flatpak update -y && flatpak remove --unused && sudo fwupdmgr get-updates
 sudo dnf autoremove -yq
+
+echo "************************************************"
+echo "All good to go! Feel free to reboot your machine!"
+echo "************************************************"
+sleep 10
