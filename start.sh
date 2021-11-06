@@ -79,6 +79,18 @@ finishtothinkpad () {
 	read answer
 	thinkpad
 }
+finishtosystem76 () {
+	clear
+	tput setaf 10
+	echo "Done..."
+	tput setaf 9
+	echo "-----------------"
+	echo "  PLEASE REBOOT"
+	echo "-----------------"
+	tput sgr0
+	echo "Hit <return> to return to System76 menu."
+	read answer
+	system76
 gpdwin () {
 	clear
 	tput setaf 9
@@ -114,14 +126,30 @@ thinkpad () {
 	badoption
 	}
 system76 () {
-        clear
+         clear
 	tput setaf 3
-        echo "This option is a work in progress, please await commits"
+	echo "What distro are you running? If you have returned here, input S to skip."
+	echo "1 = Fedora"
+	echo "2 = Pop!_OS"
+	echo "3 = Arch or Arch-based distro"
+	echo "S = Skip"
+	tput setaf 9
+	echo "Enter Q to quit"
 	tput sgr0
-	echo "Hit <return> to return to the main menu."
-	read answer
-	mainmenu
-}
+	echo "Enter your selection followed by <return>:"
+	read answer1
+	case "$answer1" in
+		1) fedora-sys76;;
+		2) pop-os-sys76;;
+		3) arch-sys76;;
+		# Redundancy in letters (see main menu for extra note)
+		Q) quitscript;;
+		q) quitscript;;
+		S) skip;;
+		s) skip;;
+	esac
+	badoption
+	}
 fedora-tp () {
 	clear
 	tput setaf 3
@@ -151,6 +179,16 @@ arch-tp () {
 	# Below line is subject to change depending on file location
 	bash ./arch-tp.sh
 	finishtothinkpad
+}
+fedora-sys76 () {
+	clear
+	tput setaf 3
+	echo "Starting Installs..."
+	tput sgr0
+	sleep 2
+	# Below line is subject to change depending on file location
+	sudo bash ./fedora-sys76.sh
+	finishtosystem76
 }
 # End of Menu Functions/Script Functions
 # Start of Main Script
